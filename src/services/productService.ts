@@ -6,9 +6,7 @@ const limit: number = 20;
 interface Response {
   products: productType[];
 }
-interface ResponseById {
-  products: productType;
-}
+
 export const fetchProducts = async () => {
   const { data } = await axios.get<Response>(BaseURL, {
     params: {
@@ -20,8 +18,7 @@ export const fetchProducts = async () => {
 };
 
 export const fetchProductById = async (id: productType['id']) => {
-  if (!id) return;
-  const { data } = await axios.get<ResponseById>(`${BaseURL}/${id}`);
+  const { data } = await axios.get<productType>(`${BaseURL}/${id}`);
   console.log(data);
   return data;
 };

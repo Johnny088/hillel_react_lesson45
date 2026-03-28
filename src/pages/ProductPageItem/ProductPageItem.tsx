@@ -11,8 +11,8 @@ export const ProductPageItem = () => {
     isError,
     isLoading,
   } = useQuery<productType>({
-    queryKey: ['product'],
-    queryFn: () => fetchProductById(id as productType['id']),
+    queryKey: ['product', id],
+    queryFn: () => fetchProductById(Number(id)),
     enabled: !!id,
   });
   return (
@@ -22,7 +22,11 @@ export const ProductPageItem = () => {
       {!isLoading && product && (
         <div className={css.container}>
           <p>{product.title}</p>
-          <img className={css.img} src={product.images[0]} alt="photo" />
+          <img
+            className={css.img}
+            src={product?.images[0]}
+            alt={product.title}
+          />
           <p>Description: {product.description}</p>
         </div>
       )}

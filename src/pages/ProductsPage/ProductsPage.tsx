@@ -11,8 +11,6 @@ export const ProductPage = () => {
     queryKey: ['products'],
     queryFn: fetchProducts,
   });
-
-  console.log(products);
   return (
     <>
       {isError && <h2>Something went wrong</h2>}
