@@ -11,7 +11,7 @@ export const ProductPageItem = () => {
     isError,
     isLoading,
   } = useQuery<productType>({
-    queryKey: ['product', id],
+    queryKey: ['product'],
     queryFn: () => fetchProductById(Number(id)),
     enabled: !!id,
   });
