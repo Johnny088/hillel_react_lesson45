@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchProducts } from '../../services/productService';
 import type { productType } from '../../types/productType/productType';
+import { Link } from 'react-router';
 export const ProductPage = () => {
   const {
     data: products,
@@ -20,7 +21,9 @@ export const ProductPage = () => {
         <ul>
           {products.map(product => (
             <li key={product.id}>
-              <p>{product.brand}</p>
+              <Link to={`${product.id}`}>
+                <p>{product.title}</p>
+              </Link>
             </li>
           ))}
         </ul>
