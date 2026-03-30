@@ -1,23 +1,22 @@
 import axios from 'axios';
-import type { productType } from '../types/productType/productType';
+import type { ProductType } from '../types/productType/productType';
 
-const BaseURL: string = 'https://dummyjson.com/products';
+const baseURL: string = 'https://dummyjson.com/products';
 const limit: number = 20;
 interface Response {
-  products: productType[];
+  products: ProductType[];
 }
 
 export const fetchProducts = async () => {
-  const { data } = await axios.get<Response>(BaseURL, {
+  const { data } = await axios.get<Response>(baseURL, {
     params: {
       limit,
     },
   });
-  const newData = data.products;
-  return newData;
+  return data.products;
 };
 
-export const fetchProductById = async (id: productType['id']) => {
-  const { data } = await axios.get<productType>(`${BaseURL}/${id}`);
+export const fetchProductById = async (id: ProductType['id']) => {
+  const { data } = await axios.get<ProductType>(`${baseURL}/${id}`);
   return data;
 };

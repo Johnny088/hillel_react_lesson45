@@ -1,15 +1,21 @@
-import { Link } from 'react-router';
+import { NavLink } from 'react-router';
 import css from './Navbar.module.css';
 export const Navbar = () => {
   return (
     <nav>
       <ul className={css.nav}>
-        <Link className={css.link} to="/">
+        <NavLink
+          className={({ isActive }) => (isActive ? css.activeLink : css.link)}
+          to="/"
+        >
           <li>Home</li>
-        </Link>
-        <Link className={css.link} to="/products">
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? css.activeLink : css.link)}
+          to="/products"
+        >
           <li>Products</li>
-        </Link>
+        </NavLink>
       </ul>
     </nav>
   );

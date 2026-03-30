@@ -1,8 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router';
-import type { productType } from '../../types/productType/productType';
+import type { ProductType } from '../../types/productType/productType';
 import { fetchProductById } from '../../services/productService';
 import css from './ProductPageItem.module.css';
+import {
+  ErrorState,
+  LoadingState,
+} from '../../components/QueryState/QueryState';
 
 export const ProductPageItem = () => {
   const { id } = useParams();
@@ -10,15 +14,15 @@ export const ProductPageItem = () => {
     data: product,
     isError,
     isLoading,
-  } = useQuery<productType>({
+  } = useQuery<ProductType>({
     queryKey: ['product'],
     queryFn: () => fetchProductById(Number(id)),
     enabled: !!id,
   });
   return (
     <>
-      {isError && <h2>Something went wrong</h2>}
-      {isLoading && <h2>Loading...</h2>}
+      {isError && <ErrorState />}
+      {isLoading && <LoadingState />}
       {!isLoading && product && (
         <div className={css.container}>
           <p>{product.title}</p>
