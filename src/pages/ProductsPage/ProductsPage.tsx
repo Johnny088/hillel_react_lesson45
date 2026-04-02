@@ -1,10 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchProducts } from '../../services/productService';
 import type { ProductType } from '../../types/productType/productType';
-import {
-  LoadingState,
-  ErrorState,
-} from '../../components/QueryState/QueryState';
+import { ErrorState } from '../../components/QueryState/ErrorState';
+import { LoadingState } from '../../components/QueryState/LoadingState';
 import { Link } from 'react-router';
 export const ProductPage = () => {
   const {
