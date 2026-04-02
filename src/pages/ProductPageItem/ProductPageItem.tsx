@@ -3,8 +3,8 @@ import { useParams } from 'react-router';
 import type { ProductType } from '../../types/productType/productType';
 import { fetchProductById } from '../../services/productService';
 import css from './ProductPageItem.module.css';
-import { ErrorState } from '../../components/QueryState/ErrorState';
-import { LoadingState } from '../../components/QueryState/LoadingState';
+import { ErrorState } from '../../components/ErrorState/ErrorState';
+import { LoadingState } from '../../components/LoadingState/LoadingState';
 
 export const ProductPageItem = () => {
   const { id } = useParams();
